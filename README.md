@@ -1,6 +1,6 @@
 <!-- Profile Banner -->
 <p align="center">
-  <img src="https://i.ibb.co/sq7JxDT/banner-github.png" alt="Md. Abu Sohan - Banner" width="100%">
+  <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/IMG_20251031_153802.jpg" alt="Md. Abu Sohan - Banner" width="100%">
 </p>
 
 <h1 align="center">Hi there 👋, I'm <span style="color:#00bfff;">Md. Abu Sohan</span></h1>
