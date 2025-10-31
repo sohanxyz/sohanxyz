@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* --- নতুন থিম ভেরিয়েবল --- */
-        :root {
+        /* --- ডার্ক মোড (ডিফল্ট) ভেরিয়েবল --- */
+        :root, body[data-bs-theme="dark"] {
             --bs-body-bg: #121212; /* ডার্ক ব্যাকগ্রাউন্ড */
             --bs-body-color: #e0e0e0;
             --card-bg: #1a1a1e; /* কার্ডের রঙ */
@@ -22,14 +22,24 @@
             --border-color: #333;
         }
 
+        /* --- লাইট মোড ভেরিয়েবল --- */
+        body[data-bs-theme="light"] {
+            --bs-body-bg: #f4f4f9;
+            --bs-body-color: #212529;
+            --card-bg: #ffffff;
+            --primary-color: #007bff; /* লাইট মোডে ভিন্ন নীল */
+            --border-color: #ddd;
+        }
+
         /* --- বেসিক স্টাইল --- */
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bs-body-bg);
             color: var(--bs-body-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* --- অ্যানিমেটেড গ্লোয়িং কার্ড (আপনার অনুরোধ অনুযায়ী) --- */
+        /* --- অ্যানিমেটেড গ্লোয়িং কার্ড (ডার্ক মোড) --- */
         @keyframes animatedGlow {
             0% {
                 border-color: var(--primary-color);
@@ -49,13 +59,18 @@
             background-color: var(--card-bg);
             border: 2px solid var(--primary-color);
             margin-bottom: 25px;
-            /* গ্লো অ্যানিমেশন প্রয়োগ */
             animation: animatedGlow 5s linear infinite;
             
-            /* ফেড-ইন অ্যানিমেশন (আগের কোড থেকে) */
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* --- লাইট মোড কার্ড স্টাইল (গ্লো ছাড়া) --- */
+        body[data-bs-theme="light"] .card {
+            animation: none; /* গ্লো অ্যানিমেশন বন্ধ */
+            border-color: var(--border-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
         .card.visible {
@@ -63,57 +78,85 @@
             transform: translateY(0);
         }
 
-        .card-title, h1, h2, h3 {
+        .card-title, h1, h2, h3, h3.profile-subtitle {
             color: var(--primary-color);
             font-weight: 600;
         }
         
         h1 {
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
         }
         h1 span {
-             color: #ffffff;
+             color: var(--bs-body-color);
+             transition: color 0.3s ease;
+        }
+        body[data-bs-theme="light"] h1 span {
+             color: #333;
         }
 
-        /* --- প্রোফাইল হেডার --- */
+
+        /* --- প্রোফাইল হেডার (নতুন) --- */
         .profile-pic {
             width: 160px;
             height: 160px;
             border-radius: 50%;
-            border: 5px solid var(--primary-color);
+            /* --card-bg ব্যবহার করা হয়েছে যেন এটি থিম পরিবর্তন করলে সাথে সাথে বর্ডার রঙও বদলায় */
+            border: 5px solid var(--card-bg);
             box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
             object-fit: cover;
+            transition: border-color 0.3s ease;
         }
         
+        .profile-header-content {
+            margin-top: -80px; /* প্রোফাইল পিকের অর্ধেক (160px / 2) */
+            position: relative;
+            z-index: 2;
+        }
+
         .profile-subtitle {
              font-size: 1.1em;
              font-weight: 300;
              color: var(--bs-body-color);
         }
+        
+        body[data-bs-theme="light"] .profile-subtitle {
+            color: #555;
+        }
+        
+        .typing-svg img {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        
+        body[data-bs-theme="light"] .typing-svg img {
+             background-color: #e9ecef; /* লাইট মোডে টাইপিং SVG-এর ব্যাকগ্রাউন্ড */
+        }
 
         /* --- আগ্রহের তালিকা --- */
-        #interests ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
         #interests li {
-            background: #121212;
+            background: var(--bs-body-bg);
             padding: 12px 15px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
             color: var(--bs-body-color);
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         
         /* --- লার্নিং টেবিল --- */
         .table {
             color: var(--bs-body-color);
+            transition: color 0.3s ease;
         }
         .table th {
             color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+        body[data-bs-theme="light"] .table {
+            --bs-table-bg: #fff;
+            --bs-table-striped-bg: #f9f9f9;
+            color: #212529;
         }
         
         /* --- ব্লককোট (উদ্ধৃতি) --- */
@@ -125,12 +168,16 @@
             background-color: rgba(0, 191, 255, 0.05);
             padding: 15px;
             border-radius: 0 8px 8px 0;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+        body[data-bs-theme="light"] blockquote {
+            background-color: rgba(0, 123, 255, 0.05);
         }
         
         /* --- ব্যাজ (মোবাইল রেসপন্সিভ) --- */
         .badges-container {
             display: flex;
-            flex-wrap: wrap; /* এটি ব্যাজগুলোকে মোবাইলে নিচে নিচে আনবে */
+            flex-wrap: wrap; 
             justify-content: center;
             gap: 10px;
         }
@@ -150,32 +197,44 @@
             font-weight: 600;
             color: var(--primary-color);
         }
+
+        /* --- থিম টগলার --- */
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        .form-check-input {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
     </style>
 </head>
-<body>
+
+<body data-bs-theme="dark">
 
     <div class="container my-4">
         <div class="row">
 
             <div class="col-lg-8">
 
-                <section class="card profile-header text-center p-4">
-                    <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/c0023880ff2166c966773531e5b9a5df.png" alt="Md. Abu Sohan" class="profile-pic mx-auto mb-3">
+                <section class="card p-0 overflow-hidden">
+                    <div>
+                        <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/IMG_20251031_153802.jpg" alt="Banner" class="img-fluid" style="width: 100%;">
+                    </div>
                     
-                    <h1>Hi there <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="40px">, <span>I'm</span> Md. Abu Sohan</h1>
+                    <div class="profile-header-content text-center p-4">
+                        <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/c0023880ff2166c966773531e5b9a5df.png" alt="Md. Abu Sohan" class="profile-pic mx-auto mb-3">
                     
-                    <h3 class="profile-subtitle">🎮 Gaming Lover | 🌱 Student & Learner | ☕ Tea Enthusiast | 🌾 Nature Admirer</h3>
-                    
-                    <div class="typing-svg mt-3">
-                        <a href="https://git.io/typing-svg">
-                            <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00BFFF&background=1A1A1EFF&center=true&vCenter=true&width=550&lines=Hey!+I'm+Md.+Abu+Sohan!;A+Student+from+Netrokona,+Bangladesh.;Learning+Programming+Step+by+Step.;A+Gamer+%26+Dreamer+for+a+Beautiful+Life.;Always+Curious+to+Learn+New+Things!" alt="Typing SVG" class="img-fluid" />
-                        </a>
+                        <h1>Hi there <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="40px">, <span>I'm</span> Md. Abu Sohan</h1>
+                        
+                        <h3 class="profile-subtitle">🎮 Gaming Lover | 🌱 Student & Learner | ☕ Tea Enthusiast | 🌾 Nature Admirer</h3>
+                        
+                        <div class="typing-svg mt-3">
+                            <a href="https://git.io/typing-svg">
+                                <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00BFFF&background=1A1A2EFF&center=true&vCenter=true&width=550&lines=Hey!+I'm+Md.+Abu+Sohan!;A+Student+from+Netrokona,+Bangladesh.;Learning+Programming+Step+by+Step.;A+Gamer+%26+Dreamer+for+a+Beautiful+Life.;Always+Curious+to+Learn+New+Things!" alt="Typing SVG" class="img-fluid" />
+                            </a>
+                        </div>
                     </div>
                 </section>
-
-                <div class="card p-2">
-                    <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/IMG_20251031_153802.jpg" alt="Banner" class="img-fluid rounded">
-                </div>
 
                 <section id="about" class="card">
                     <div class="card-body">
@@ -218,7 +277,7 @@
                     <div class="card-body">
                         <h2 class="card-title mb-3">🌱 বর্তমানে শিখছি</h2>
                         <div class="table-responsive">
-                            <table class="table table-dark table-striped table-hover">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th>Area</th>
@@ -261,6 +320,18 @@
 
             <div class="col-lg-4">
                 
+                <section class="card">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <h3 class="card-title fs-6 mb-0">থিম পরিবর্তন করুন</h3>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="theme-toggle">
+                            <label class="form-check-label fs-5" for="theme-toggle" id="theme-label-icon">
+                                <i class="fas fa-moon"></i>
+                            </label>
+                        </div>
+                    </div>
+                </section>
+
                 <section id="connect" class="card">
                     <div class="card-body">
                         <h2 class="card-title mb-3 text-center">🌐 যোগাযোগ করুন</h2>
@@ -307,17 +378,65 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // অ্যানিমেশন একবার দেখানোর পর বন্ধ করুন
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, {
-                threshold: 0.1 // ১০% দেখা গেলেই অ্যানিমেশন শুরু হবে
+                threshold: 0.1 
             });
 
-            // সকল .card এলিমেন্ট পর্যবেক্ষণ করুন
             document.querySelectorAll('.card').forEach(section => {
                 observer.observe(section);
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleSwitch = document.getElementById('theme-toggle');
+            const iconLabel = document.getElementById('theme-label-icon');
+            const body = document.body;
+            const typingSvg = document.querySelector('.typing-svg img'); // টাইপিং SVG ইমেজ
+
+            // থিম সেট করার ফাংশন
+            function setTheme(theme) {
+                body.setAttribute('data-bs-theme', theme);
+                localStorage.setItem('theme', theme);
+
+                // টাইপিং SVG-এর URL পরিবর্তন (যদি থাকে)
+                if (typingSvg) {
+                    const currentSrc = typingSvg.getAttribute('src');
+                    let newSrc;
+                    if (theme === 'dark') {
+                        // ডার্ক মোডের জন্য SVG URL
+                        newSrc = currentSrc.replace(/background=[0-9A-Fa-f]{6}/, 'background=1A1A2EFF');
+                        typingSvg.style.backgroundColor = 'var(--card-bg)'; // CSS ভেরিয়েবল থেকে ব্যাকগ্রাউন্ড
+                    } else {
+                        // লাইট মোডের জন্য SVG URL (যেমন e9ecef)
+                        newSrc = currentSrc.replace(/background=[0-9A-Fa-f]{6}/, 'background=E9ECEF');
+                        typingSvg.style.backgroundColor = '#e9ecef'; // সরাসরি লাইট মোড ব্যাকগ্রাউন্ড
+                    }
+                    typingSvg.setAttribute('src', newSrc);
+                }
+
+                // আইকন ও সুইচ আপডেট
+                if (theme === 'dark') {
+                    toggleSwitch.checked = true;
+                    iconLabel.innerHTML = '<i class="fas fa-sun"></i>'; // ডার্ক মোডে থাকলে সূর্য দেখাবে
+                } else {
+                    toggleSwitch.checked = false;
+                    iconLabel.innerHTML = '<i class="fas fa-moon"></i>'; // লাইট মোডে থাকলে চাঁদ দেখাবে
+                }
+            }
+
+            // সুইচ পরিবর্তন হলে থিম টগল করুন
+            toggleSwitch.addEventListener('change', function() {
+                setTheme(this.checked ? 'dark' : 'light');
+            });
+
+            // পেজ লোড হলে সেভ করা থিম প্রয়োগ করুন (ডিফল্ট 'dark')
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            setTheme(savedTheme);
         });
     </script>
 
