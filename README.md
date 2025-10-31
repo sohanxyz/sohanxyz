@@ -1,4 +1,4 @@
-<!-- Profile Banner (Optional) -->
+<!-- Profile Banner -->
 <p align="center">
   <img src="https://i.ibb.co/sq7JxDT/banner-github.png" alt="Md. Abu Sohan - Banner" width="100%">
 </p>
@@ -6,94 +6,85 @@
 <h1 align="center">Hi there 👋, I'm <span style="color:#00bfff;">Md. Abu Sohan</span></h1>
 
 <h3 align="center">
-  🌱 A Student | 💻 Tech Learner | 🎮 Gamer | ☕ Tea Lover | 🌾 Nature Enthusiast
+  🎮 Gaming Lover | 🌱 Student & Learner | ☕ Tea Enthusiast | 🌾 Nature Admirer
 </h3>
 
 <!-- Typing Effect -->
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00BFFF&center=true&vCenter=true&width=550&lines=Hello+I'm+Md.+Abu+Sohan!;A+Student+from+Netrokona,+Bangladesh.;Learning+Coding+%26+Photo+Editing.;Dreaming+of+a+Beautiful+Life+in+Dunya+%26+Akhirah." alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00BFFF&center=true&vCenter=true&width=550&lines=Hey!+I'm+Md.+Abu+Sohan!;A+Student+from+Netrokona,+Bangladesh.;Learning+Programming+Step+by+Step.;A+Gamer+%26+Dreamer+for+a+Beautiful+Life.;Always+Curious+to+Learn+New+Things!" alt="Typing SVG" />
   </a>
 </p>
 
 ---
 
-## 🧑‍💻 About Me
-> *"Every day is a new opportunity to learn and become better."*
-
-Hi! I'm **Md. Abu Sohan**, a **17-year-old student** from **Netrokona District, Bangladesh**.  
-Currently studying in **Class 10**, I’m deeply passionate about **technology, creativity, and personal growth**.  
-My mission is simple — **to live a life that’s meaningful in both this world and the Hereafter (Akhirah).**
-
----
-
-## 🎯 Goals & Vision
-✨ To become a skilled, ethical developer.  
-🌍 To build something that helps people.  
-🤲 To lead a balanced life between Dunya and Akhirah.  
+## 👋 About Me
+Hey there!  
+I'm **Md. Abu Sohan**, a **17-year-old student** from **Netrokona District, Bangladesh**.  
+Currently, I’m in **Class 10** and exploring the basics of **technology, creativity, and coding**.  
+I may not be a programmer yet — but I’m **learning every day** and enjoying the journey!  
 
 ---
 
-## 🚀 My Interests
-- 🎮 Gaming & eSports  
-- 🖼️ Photo Editing & Creative Design  
-- 💻 Learning Coding (HTML, CSS, Python, C++)  
-- ☕ Drinking Tea (a lot 😅)  
+## 🎯 My Dream
+> “To build a life that’s beautiful in both the Dunya and the Akhirah.”
+
+My biggest dream is to become a good human being — skilled, kind, and creative — who can use knowledge and technology for good.
+
+---
+
+## 🎮 My Interests
+- 🎮 Gaming (Passionate Gamer & eSports Enthusiast)  
+- 🖼️ Photo Editing  
+- ☕ Drinking Tea & Chilling  
+- 💻 Learning Programming Step by Step  
 - 🌾 Agricultural Work  
-- 🚶‍♂️ Traveling and Exploring New Places  
+- 🚶‍♂️ Traveling & Exploring New Places  
 
 ---
 
-## 🛠️ Currently Learning
-| Topic | Level | Tools/Frameworks |
-|:------|:------:|:----------------|
-| Web Development | 🟡 Beginner | HTML, CSS, JS |
-| Programming | 🟢 Learning | Python, C++ |
-| Photo Editing | 🟢 Intermediate | Photoshop, Canva, Lightroom |
+## 🌱 Currently Learning
+| Area | Status | Description |
+|:------|:------:|:------------|
+| Programming Basics | 🟢 Learning | Starting with simple concepts |
+| Computer Skills | 🟡 Beginner | Typing, exploring tools, curiosity |
+| Creative Editing | 🟢 Active | Using mobile & PC tools for fun edits |
 
 ---
 
-## 📊 GitHub Stats
-<p align="center">
-  <img width="48%" src="https://github-readme-stats.vercel.app/api?username=AbuSohan&show_icons=true&theme=tokyonight" />
-  <img width="48%" src="https://github-readme-streak-stats.herokuapp.com/?user=AbuSohan&theme=tokyonight" />
-</p>
+## 💭 Philosophy
+> “I may not know much yet, but I’m on a journey to learn, grow, and make my future bright.”  
 
 ---
 
-## 🌐 Connect With Me  
+## 🌐 Connect With Me
 <p align="center">
   <a href="https://wa.me/8801626393729"><img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" /></a>
   <a href="https://www.facebook.com/profile.php?id=61577709300358"><img src="https://img.shields.io/badge/Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white" /></a>
-  <a href="mailto:your@email.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+  <a href="mailto:mdsohan4822@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 </p>
 
 ---
 
-## 🧩 Fun Fact
-> “I may not know everything yet, but I’m on a journey to **learn, grow, and create something meaningful** every day.”
-
----
-
-## 🧭 Quote I Live By
-> “Don’t compare your beginning with someone else’s middle. Every expert was once a beginner.”
-
----
-
-## 🏆 Badges & Highlights
+## 🏆 Badges About Me
 <p align="center">
-  <img src="https://img.shields.io/badge/Learner-Active-brightgreen?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Tea%20Lover-%E2%98%95-orange?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Coder-In%20Progress-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Gamer🎮-Passionate-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Gaming%20Lover🎮-Passionate-purple?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Beginner%20Learner-Learning%20Everyday-brightgreen?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Tea%20Lover☕-Always%20Active-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Dreamer💭-Motivated-blue?style=for-the-badge" />
 </p>
+
+---
+
+## ⚡ Fun Fact
+> I’m not an expert (yet 😉), but I love learning new things — especially when there’s tea and games involved!
 
 ---
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=AbuSohan&label=Profile+Views&color=00BFFF&style=for-the-badge" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=sohanxyz&label=Profile+Views&color=00BFFF&style=for-the-badge" alt="Profile views" />
 </p>
 
 ---
 
-⭐ **"Learning never stops — every small step takes you closer to your dream."**
+⭐ **"Every pro was once a beginner — I’m just getting started!"**
