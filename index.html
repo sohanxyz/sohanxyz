@@ -3,145 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Abu Sohan - Personal Portfolio</title>
+    <title>Md. Abu Sohan - New Portfolio Theme</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* --- ভেরিয়েবল (রঙ) --- */
+        /* --- নতুন থিম ভেরিয়েবল --- */
         :root {
-            --bg-color: #0f0f1a; /* ডার্ক ব্যাকগ্রাউন্ড */
-            --card-color: #1a1a2e; /* কার্ডের রঙ */
-            --primary-color: #00bfff; /* প্রধান নীল রঙ (গ্লো) */
-            --text-color: #e0e0e0; /* সাধারণ লেখা */
-            --text-secondary: #a0a0c0; /* হালকা লেখা */
-            --border-color: #2a2a4e;
+            --bs-body-bg: #121212; /* ডার্ক ব্যাকগ্রাউন্ড */
+            --bs-body-color: #e0e0e0;
+            --card-bg: #1a1a1e; /* কার্ডের রঙ */
+            --primary-color: #00bfff; /* প্রধান নীল রঙ */
+            --secondary-color: #9400D3; /* অ্যানিমেশনের জন্য বেগুনি */
+            --border-color: #333;
         }
 
         /* --- বেসিক স্টাইল --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
+        /* --- অ্যানিমেটেড গ্লোয়িং কার্ড (আপনার অনুরোধ অনুযায়ী) --- */
+        @keyframes animatedGlow {
+            0% {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+            }
+            50% {
+                border-color: var(--secondary-color);
+                box-shadow: 0 0 15px rgba(148, 0, 211, 0.4);
+            }
+            100% {
+                border-color: var(--primary-color);
+                box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
+            }
         }
 
-        /* --- ব্যানার --- */
-        .banner img {
-            width: 100%;
-            border-radius: 10px;
-            border: 2px solid var(--border-color);
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--primary-color);
+            margin-bottom: 25px;
+            /* গ্লো অ্যানিমেশন প্রয়োগ */
+            animation: animatedGlow 5s linear infinite;
+            
+            /* ফেড-ইন অ্যানিমেশন (আগের কোড থেকে) */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-title, h1, h2, h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+        h1 span {
+             color: #ffffff;
         }
 
         /* --- প্রোফাইল হেডার --- */
-        .profile-header {
-            text-align: center;
-            margin-top: -80px; /* ব্যানার ইমেজের উপর ওভারল্যাপ */
-            position: relative;
-            padding-bottom: 30px;
-        }
-
         .profile-pic {
             width: 160px;
             height: 160px;
             border-radius: 50%;
             border: 5px solid var(--primary-color);
-            box-shadow: 0 0 25px rgba(0, 191, 255, 0.6); /* গ্লো ইফেক্ট */
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
             object-fit: cover;
-            background-color: var(--card-color);
-        }
-
-        .profile-header h1 {
-            font-size: 2.8em;
-            font-weight: 700;
-            color: #ffffff;
-            margin-top: 15px;
-            text-shadow: 0 0 10px rgba(0, 191, 255, 0.5); /* গ্লোয়িং টেক্সট */
         }
         
-        .profile-header h1 span {
-            color: var(--primary-color);
-        }
-
-        .profile-header h3 {
-            font-size: 1.1em;
-            font-weight: 300;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-        }
-        
-        .typing-svg {
-            background-color: var(--card-color);
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            display: inline-block;
-        }
-
-        /* --- সেকশন কার্ড স্টাইল --- */
-        .card {
-            background-color: var(--card-color);
-            border-radius: 10px;
-            padding: 25px 30px;
-            margin-top: 25px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.2); /* হোভারে হালকা গ্লো */
-        }
-        
-        .card h2 {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-        }
-        
-        .card p, .card li {
-            font-size: 1.05em;
-            color: var(--text-secondary);
-        }
-        
-        .card strong {
-            color: var(--text-color);
-        }
-
-        /* --- স্বপ্ন ও ফিলোসফি সেকশন --- */
-        blockquote {
-            font-size: 1.2em;
-            font-style: italic;
-            color: var(--text-color);
-            border-left: 4px solid var(--primary-color);
-            padding-left: 15px;
-            margin: 15px 0;
-            background-color: rgba(0, 191, 255, 0.05);
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
+        .profile-subtitle {
+             font-size: 1.1em;
+             font-weight: 300;
+             color: var(--bs-body-color);
         }
 
         /* --- আগ্রহের তালিকা --- */
@@ -152,269 +100,206 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
-
         #interests li {
-            background: var(--bg-color);
+            background: #121212;
             padding: 12px 15px;
             border-radius: 8px;
             border: 1px solid var(--border-color);
-            transition: background-color 0.3s;
+            color: var(--bs-body-color);
         }
         
-        #interests li:hover {
-            background-color: #2a2a4e;
+        /* --- লার্নিং টেবিল --- */
+        .table {
+            color: var(--bs-body-color);
         }
-
-        /* --- লার্নিং স্ট্যাটাস টেবিল --- */
-        .learning-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        .learning-table th, .learning-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .learning-table th {
-            background-color: #2a2a4e;
+        .table th {
             color: var(--primary-color);
         }
         
-        .learning-table td:nth-child(2) {
-            text-align: center;
-            font-weight: 600;
-        }
-
-        /* --- কানেক্ট / সোশ্যাল লিঙ্ক --- */
-        .social-links {
-            text-align: center;
-            padding: 20px 0 10px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            text-decoration: none;
-            color: #ffffff;
+        /* --- ব্লককোট (উদ্ধৃতি) --- */
+        blockquote {
             font-size: 1.1em;
-            font-weight: 600;
-            padding: 12px 25px;
-            margin: 8px;
-            border-radius: 50px; /* পিল বাটন */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-style: italic;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 15px;
+            background-color: rgba(0, 191, 255, 0.05);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
         }
         
-        .social-links a i {
-            margin-right: 10px;
+        /* --- ব্যাজ (মোবাইল রেসপন্সিভ) --- */
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap; /* এটি ব্যাজগুলোকে মোবাইলে নিচে নিচে আনবে */
+            justify-content: center;
+            gap: 10px;
         }
 
-        /* কালারফুল বাটন */
-        .btn-whatsapp { background: #25D366; }
-        .btn-facebook { background: #1877F2; }
-        .btn-email { background: #d35400; }
-        
+        /* --- সোশ্যাল বাটন (সাইডবার) --- */
+        .social-links a {
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
         .social-links a:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             filter: brightness(1.1);
         }
-        
-        /* গ্লোয়িং বাটন */
-        .btn-whatsapp:hover { box-shadow: 0 0 15px #25D366; }
-        .btn-facebook:hover { box-shadow: 0 0 15px #1877F2; }
-        .btn-email:hover { box-shadow: 0 0 15px #d35400; }
 
-        /* --- ব্যাজ ও ফুটার --- */
-        .badges, .footer {
-            text-align: center;
-            padding: 15px 0;
-        }
-        
-        .badges img, .footer img {
-            margin: 5px;
-        }
-
-        .footer p {
-            font-size: 1.1em;
-            color: var(--primary-color);
+        /* --- ফুটার --- */
+        .footer-card {
             font-weight: 600;
-            margin-top: 15px;
+            color: var(--primary-color);
         }
-        
-        /* --- জাভাস্ক্রিপ্ট অ্যানিমেশন --- */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* --- রেসপন্সিভ ডিজাইন --- */
-        @media (max-width: 768px) {
-            .profile-header {
-                margin-top: -60px;
-            }
-            .profile-pic {
-                width: 120px;
-                height: 120px;
-            }
-            .profile-header h1 {
-                font-size: 2.2em;
-            }
-            .profile-header h3 {
-                font-size: 1em;
-            }
-            .typing-svg img {
-                width: 100%; /* মোবাইলের জন্য টাইপিং SVG রিসাইজ */
-            }
-            .learning-table th, .learning-table td {
-                padding: 10px 8px;
-                font-size: 0.9em;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            #interests ul {
-                grid-template-columns: 1fr; /* এক কলাম */
-            }
-            .social-links a {
-                display: block; /* বাটনগুলো একটির নিচে একটি */
-                width: 100%;
-            }
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <header class="banner fade-in">
-            <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/IMG_20251031_153802.jpg" alt="Md. Abu Sohan - Banner">
-        </header>
+    <div class="container my-4">
+        <div class="row">
 
-        <main>
-            <section class="profile-header fade-in">
-                <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/c0023880ff2166c966773531e5b9a5df.png" alt="Md. Abu Sohan" class="profile-pic">
-                
-                <h1>Hi there <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="40px">, I'm <span>Md. Abu Sohan</span></h1>
-                
-                <h3>🎮 Gaming Lover | 🌱 Student & Learner | ☕ Tea Enthusiast | 🌾 Nature Admirer</h3>
-                
-                <div class="typing-svg">
-                    <a href="https://git.io/typing-svg">
-                        <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00BFFF&background=1A1A2EFF&center=true&vCenter=true&width=550&lines=Hey!+I'm+Md.+Abu+Sohan!;A+Student+from+Netrokona,+Bangladesh.;Learning+Programming+Step+by+Step.;A+Gamer+%26+Dreamer+for+a+Beautiful+Life.;Always+Curious+to+Learn+New+Things!" alt="Typing SVG" />
-                    </a>
+            <div class="col-lg-8">
+
+                <section class="card profile-header text-center p-4">
+                    <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/c0023880ff2166c966773531e5b9a5df.png" alt="Md. Abu Sohan" class="profile-pic mx-auto mb-3">
+                    
+                    <h1>Hi there <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="40px">, <span>I'm</span> Md. Abu Sohan</h1>
+                    
+                    <h3 class="profile-subtitle">🎮 Gaming Lover | 🌱 Student & Learner | ☕ Tea Enthusiast | 🌾 Nature Admirer</h3>
+                    
+                    <div class="typing-svg mt-3">
+                        <a href="https://git.io/typing-svg">
+                            <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00BFFF&background=1A1A1EFF&center=true&vCenter=true&width=550&lines=Hey!+I'm+Md.+Abu+Sohan!;A+Student+from+Netrokona,+Bangladesh.;Learning+Programming+Step+by+Step.;A+Gamer+%26+Dreamer+for+a+Beautiful+Life.;Always+Curious+to+Learn+New+Things!" alt="Typing SVG" class="img-fluid" />
+                        </a>
+                    </div>
+                </section>
+
+                <div class="card p-2">
+                    <img src="https://raw.githubusercontent.com/sohanxyz/sohanxyz/refs/heads/main/photos/IMG_20251031_153802.jpg" alt="Banner" class="img-fluid rounded">
                 </div>
-            </section>
 
-            <section id="about" class="card fade-in">
-                <h2>👋 আমার সম্পর্কে</h2>
-                <p>
-                    Hey there! আমি <strong>Md. Abu Sohan</strong>, বাংলাদেশের <strong>নেত্রকোনা জেলার</strong> একজন <strong>১৭ বছর বয়সী ছাত্র</strong>।
-                    বর্তমানে আমি <strong>দশম শ্রেণীতে</strong> পড়ছি এবং প্রযুক্তি, সৃজনশীলতা ও কোডিংয়ের প্রাথমিক বিষয়গুলো探索 করছি।
-                    আমি এখনও প্রোগ্রামার নই — কিন্তু আমি <strong>প্রতিদিন শিখছি</strong> এবং এই যাত্রা উপভোগ করছি!
-                </p>
-            </section>
+                <section id="about" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-3">👋 আমার সম্পর্কে</h2>
+                        <p>
+                            Hey there! আমি <strong>Md. Abu Sohan</strong>, বাংলাদেশের <strong>নেত্রকোনা জেলার</strong> একজন <strong>১৭ বছর বয়সী ছাত্র</strong>।
+                            বর্তমানে আমি <strong>দশম শ্রেণীতে</strong> পড়ছি এবং প্রযুক্তি, সৃজনশীলতা ও কোডিংয়ের প্রাথমিক বিষয়গুলো অন্বেষণ করছি।
+                            আমি এখনও প্রোগ্রামার নই — কিন্তু আমি <strong>প্রতিদিন শিখছি</strong> এবং এই যাত্রা উপভোগ করছি!
+                        </p>
+                    </div>
+                </section>
 
-            <section id="dream" class="card fade-in">
-                <h2>🎯 আমার স্বপ্ন</h2>
-                <blockquote>
-                    “দুনিয়া এবং আখিরাত উভয় জগতেই সুন্দর একটি জীবন গড়ার।”
-                </blockquote>
-                <p>
-                    আমার সবচেয়ে বড় স্বপ্ন হলো একজন ভালো মানুষ হওয়া — দক্ষ, দয়ালু এবং সৃজনশীল — যে তার জ্ঞান এবং প্রযুক্তিকে ভালো কাজে ব্যবহার করতে পারে।
-                </p>
-            </section>
+                <section id="dream" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-3">🎯 আমার স্বপ্ন</h2>
+                        <blockquote>
+                            “দুনিয়া এবং আখিরাত উভয় জগতেই সুন্দর একটি জীবন গড়ার।”
+                        </blockquote>
+                        <p class="mt-3">
+                            আমার সবচেয়ে বড় স্বপ্ন হলো একজন ভালো মানুষ হওয়া — দক্ষ, দয়ালু এবং সৃজনশীল — যে তার জ্ঞান এবং প্রযুক্তিকে ভালো কাজে ব্যবহার করতে পারে।
+                        </p>
+                    </div>
+                </section>
 
-            <section id="interests" class="card fade-in">
-                <h2>🎮 আমার আগ্রহ</h2>
-                <ul>
-                    <li>🎮 গেমিং (Passionate Gamer & eSports Enthusiast)</li>
-                    <li>🖼️ ফটো এডিটিং</li>
-                    <li>☕ চা পান করা</li>
-                    <li>💻 ধাপে ধাপে প্রোগ্রামিং শেখা</li>
-                    <li>🌾 কৃষি কাজ</li>
-                    <li>🚶‍♂️ ভ্রমণ এবং নতুন জায়গা探索 করা</li>
-                </ul>
-            </section>
+                <section id="interests" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-3">🎮 আমার আগ্রহ</h2>
+                        <ul>
+                            <li>🎮 গেমিং (Passionate Gamer & eSports Enthusiast)</li>
+                            <li>🖼️ ফটো এডিটিং</li>
+                            <li>☕ চা পান করা</li>
+                            <li>💻 ধাপে ধাপে প্রোগ্রামিং শেখা</li>
+                            <li>🌾 কৃষি কাজ</li>
+                            <li>🚶‍♂️ ভ্রমণ এবং নতুন জায়গা অন্বেষণ করা</li>
+                        </ul>
+                    </div>
+                </section>
 
-            <section id="learning" class="card fade-in">
-                <h2>🌱 বর্তমানে শিখছি</h2>
-                <table class="learning-table">
-                    <thead>
-                        <tr>
-                            <th>Area</th>
-                            <th>Status</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Programming Basics</td>
-                            <td>🟢 Learning</td>
-                            <td>Starting with simple concepts</td>
-                        </tr>
-                        <tr>
-                            <td>Computer Skills</td>
-                            <td>🟡 Beginner</td>
-                            <td>Typing, exploring tools, curiosity</td>
-                        </tr>
-                        <tr>
-                            <td>Creative Editing</td>
-                            <td>🟢 Active</td>
-                            <td>Using mobile & PC tools for fun edits</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+                <section id="learning" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-3">🌱 বর্তমানে শিখছি</h2>
+                        <div class="table-responsive">
+                            <table class="table table-dark table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Area</th>
+                                        <th class="text-center">Status</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Programming Basics</td>
+                                        <td class="text-center">🟢 Learning</td>
+                                        <td>Starting with simple concepts</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Computer Skills</td>
+                                        <td class="text-center">🟡 Beginner</td>
+                                        <td>Typing, exploring tools, curiosity</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Creative Editing</td>
+                                        <td class="text-center">🟢 Active</td>
+                                        <td>Using mobile & PC tools for fun edits</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
 
-            <section id="philosophy" class="card fade-in">
-                <h2>💭 ফিলোসফি</h2>
-                <blockquote>
-                    “আমি হয়তো এখনও বেশি কিছু জানি না, কিন্তু আমি শিখতে, বড় হতে এবং আমার ভবিষ্যতকে উজ্জ্বল করার যাত্রায় আছি।”
-                </blockquote>
-            </section>
+                <section id="philosophy" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-3">💭 ফিলোসফি</h2>
+                        <blockquote>
+                            “আমি হয়তো এখনও বেশি কিছু জানি না, কিন্তু আমি শিখতে, বড় হতে এবং আমার ভবিষ্যতকে উজ্জ্বল করার যাত্রায় আছি।”
+                        </blockquote>
+                    </div>
+                </section>
 
-            <section id="badges" class="card fade-in">
-                <h2>🏆 আমার ব্যাজ</h2>
-                <div class="badges">
-                    <img src="https://img.shields.io/badge/Gaming%20Lover🎮-Passionate-purple?style=for-the-badge" alt="Gaming Lover">
-                    <img src="https://img.shields.io/badge/Beginner%20Learner-Learning%20Everyday-brightgreen?style=for-the-badge" alt="Beginner Learner">
-                    <img src="https://img.shields.io/badge/Tea%20Lover☕-Always%20Active-orange?style=for-the-badge" alt="Tea Lover">
-                    <img src="https://img.shields.io/badge/Dreamer💭-Motivated-blue?style=for-the-badge" alt="Dreamer">
-                </div>
-            </section>
+            </div>
 
-            <section id="connect" class="card fade-in">
-                <h2>🌐 আমার সাথে যোগাযোগ করুন</h2>
-                <div class="social-links">
-                    <a href="https://wa.me/8801626393729" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://www.facebook.com/profile.php?id=61577709300358" class="btn-facebook" target="_blank">
-                        <i class="fab fa-facebook-f"></i> Facebook
-                    </a>
-                    <a href="mailto:mdsohan4822@gmail.com" class="btn-email" target="_blank">
-                        <i class="fas fa-envelope"></i> Email
-                    </a>
-                </div>
-            </section>
+            <div class="col-lg-4">
+                
+                <section id="connect" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-3 text-center">🌐 যোগাযোগ করুন</h2>
+                        <div class="social-links d-grid gap-3">
+                            <a href="https://wa.me/8801626393729" class="btn btn-success" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="https://www.facebook.com/profile.php?id=61577709300358" class="btn btn-primary" target="_blank">
+                                <i class="fab fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="mailto:mdsohan4822@gmail.com" class="btn btn-danger" target="_blank">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </section>
 
-        </main>
+                <section id="badges" class="card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4 text-center">🏆 আমার ব্যাজ</h2>
+                        <div class="badges-container">
+                            <img src="https://img.shields.io/badge/Gaming%20Lover🎮-Passionate-purple?style=for-the-badge" alt="Gaming Lover">
+                            <img src="https://img.shields.io/badge/Beginner%20Learner-Learning%20Everyday-brightgreen?style=for-the-badge" alt="Beginner Learner">
+                            <img src="https://img.shields.io/badge/Tea%20Lover☕-Always%20Active-orange?style=for-the-badge" alt="Tea Lover">
+                            <img src="https://img.shields.io/badge/Dreamer💭-Motivated-blue?style=for-the-badge" alt="Dreamer">
+                        </div>
+                    </div>
+                </section>
 
-        <footer class="footer fade-in">
-            <img src="https://komarev.com/ghpvc/?username=sohanxyz&label=Profile+Views&color=00BFFF&style=for-the-badge" alt="Profile views" />
-            
-            <p>⭐ "Every pro was once a beginner — I’m just getting started!" ⭐</p>
-        </footer>
+                <section class="card footer-card text-center p-3">
+                    <img src="https://komarev.com/ghpvc/?username=sohanxyz&label=Profile+Views&color=00BFFF&style=for-the-badge" alt="Profile views" class="img-fluid mx-auto mb-2" />
+                    <p class="m-0">⭐ "Every pro was once a beginner — I’m just getting started!" ⭐</p>
+                </section>
 
+            </div>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -429,8 +314,8 @@
                 threshold: 0.1 // ১০% দেখা গেলেই অ্যানিমেশন শুরু হবে
             });
 
-            // সকল .fade-in এলিমেন্ট পর্যবেক্ষণ করুন
-            document.querySelectorAll('.fade-in').forEach(section => {
+            // সকল .card এলিমেন্ট পর্যবেক্ষণ করুন
+            document.querySelectorAll('.card').forEach(section => {
                 observer.observe(section);
             });
         });
